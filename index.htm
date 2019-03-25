@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Othernet-Online Project by zefie</title>
+<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css" />
+<script src="/jquery-3.3.1.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
+<script>
+window.addEventListener("load", function(){
+window.cookieconsent.initialise({
+  "palette": {
+    "popup": {
+      "background": "#000"
+    },
+    "button": {
+      "background": "#f1d600"
+    }
+  }
+})});
+</script>
+<script>
+var autologin = 0;
+$( document ).ready(function() {
+	$('#dreamcatcher').on('load',function(){
+		var res = $('#dreamcatcher').contents().find('#LoginSubmit');
+		if (res.length > 0) {
+			if (autologin != 1) {
+				$('#dreamcatcher').contents().find('#LoginUsername').value = 'guest';
+				$('#dreamcatcher').contents().find('#LoginPassword').value = 'guest';
+				$('#dreamcatcher').contents().find('#LoginSubmit').click();
+				autologin = 1
+			} else {
+				$('#dreamcatcher').attr('src', "/start.htm");
+				autologin = 0;
+			}
+			res = null;
+		}
+	});
+});
+</script>
+<style type="text/css">
+body {
+	background-color: #000;
+	color: #aaa;
+}
+
+a, a:link, a:hover, a:visited {
+	color: lavender;
+}
+
+#logo {
+	float: right;
+	display: inline;
+	padding-bottom: 10px;
+}
+
+#dreamcatcher {
+	width: 99vw;
+	height: 80vh;
+}
+
+#footer {
+	width: 99vw;
+	font-size: small;
+	text-align: right;
+}
+</style>
+</head>
+<body style="">
+<div id="header">
+<img src="/oo.png" id="logo">
+Welcome to the Othernet-Online Project by <a href="https://zefie.com/" target="_blank">zefie</a>, hosted by (you)<br>
+When you click the start button below, you will be connected to a (device) with guest access, located in (location) connected via (brief setup description)<br>
+If nothing loads after pressing start, the Dreamcatcher may be offline.<br>
+<br>
+</div>
+<iframe src="/start.htm" id="dreamcatcher"></iframe>
+<div id="footer">
+<em>
+Access is not monitored, but is logged, for security purposes only.<br>
+This site is not officially endorsed by Othernet Inc.
+</em>
+</div>
+</body>
+</html>
