@@ -9,3 +9,8 @@ not exposed to those using the Dreamcatcher.
 This script won't work if its not run in the / directory of a site.
 
 Eg mysite.com/othernet/ won't work (out of the box, probably possible with .htaccess modifications)
+
+Note, for files to work, you need to set the following in your VirtualHost config:
+
+AllowEncodedSlashes NoDecode
+

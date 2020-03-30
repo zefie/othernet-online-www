@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Othernet-Online Project by zefie</title>
+<title>Othernet-Online Project v5.8 by zefie</title>
 <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css" />
 <script src="/jquery-3.3.1.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
@@ -26,13 +26,20 @@ $( document ).ready(function() {
 		var res = $('#dreamcatcher').contents().find('#LoginSubmit');
 		if (res.length > 0) {
 			if (autologin != 1) {
-				$('#dreamcatcher').contents().find('#LoginUsername').value = 'guest';
-				$('#dreamcatcher').contents().find('#LoginPassword').value = 'guest';
-				$('#dreamcatcher').contents().find('#LoginSubmit').click();
-				autologin = 1
+				$('#wait').position($('#dreamcatcher').position());
+				$('#wait').show();
+				setTimeout(function() {
+					$('#dreamcatcher').contents().find('#LoginUsername').value = 'guest';
+					$('#dreamcatcher').contents().find('#LoginPassword').value = 'guest';
+					$('#dreamcatcher').contents().find('#LoginSubmit').click();
+					autologin = 1
+					setTimeout(function() {
+						$('#wait').hide();
+					}, 500);
+				}, 1500);
 			} else {
-				$('#dreamcatcher').attr('src', "/start.htm");
-				autologin = 0;
+					$('#dreamcatcher').attr('src', "/start.htm");
+					autologin = 0;
 			}
 			res = null;
 		}
@@ -65,16 +72,31 @@ a, a:link, a:hover, a:visited {
 	font-size: small;
 	text-align: right;
 }
+
+#wait {
+	display: none;
+	position: absolute;
+	background-color: #000;
+	color: #aaa;
+	width: 99vw;
+	height: 80vh;
+	border: 1px #aaa solid;
+	text-align: center; 
+    vertical-align: middle;
+	line-height: 80vh;
+	font-size: 40pt;
+}
 </style>
 </head>
 <body style="">
 <div id="header">
 <img src="/oo.png" id="logo">
-Welcome to the Othernet-Online Project by <a href="https://zefie.com/" target="_blank">zefie</a>, hosted by (you)<br>
-When you click the start button below, you will be connected to a (device) with guest access, located in (location) connected via (brief setup description)<br>
+Welcome to the Othernet-Online Project v5.8 by <a href="https://zefie.com/" target="_blank">zefie</a>, hosted by zefie<br>
+When you click the start button below, you will be connected to a Dreamcatcher v3.03 with guest access, located in Upstate NY, USA connected via DTV Dish + Single LO LNB<br>
 If nothing loads after pressing start, the Dreamcatcher may be offline.<br>
 <br>
 </div>
+<div id="wait">Please wait...</div>
 <iframe src="/start.htm" id="dreamcatcher"></iframe>
 <div id="footer">
 <em>

@@ -11,7 +11,7 @@ body {
 	height: 100%;
 	width: 100%;	
 }
-input[type=submit] {
+button {
 	height:75px;
 	width:250px;
 	margin: auto;
@@ -24,9 +24,7 @@ input[type=submit] {
 </head>
 <body>
 <div id="wrapper">
-<form action="/index.php" method="get">
-<input type="submit" value="Start">
-</form>
+<button onclick="location.href='/index.php?'">Start</button>
 </div>
 </body>
 </html>
